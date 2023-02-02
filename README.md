@@ -93,7 +93,7 @@ packages:
 
 
 
-## 2、配置组件环境
+## 2、配置环境
 
 在根目录下
 
@@ -137,6 +137,99 @@ pnpm i @dtsz-ui/theme-chalk
 
 ```js
 import xxx from '@dtsz-ui/utils'
+```
+
+
+
+**eslint配置**
+
+```shell
+npx eslint --init # 选择： no install now
+pnpm i eslint-plugin-vue@latest @typescript-eslint/eslint-plugin@latest @typescript-eslint/parser@latest eslint@latest -D -w
+pnpm i @vue/eslint-config-typescript -D -w
+```
+
+`eslintrc.js`
+
+```js
+module.exports = {
+    env: {
+        browser: true,
+        es2021: true,
+        node: true
+    },
+    extends: [
+        'eslint:recommended',
+        'plugin:vue/vue3-recommended', // vue3解析 https://eslint.vuejs.org/
+        'plugin:@typescript-eslint/recommended',
+        '@vue/typescript/recommended'
+    ],
+    parserOptions: {
+        ecmaVersion: 'latest',
+        parser: '@typescript-eslint/parser',
+        sourceType: 'module'
+    },
+    plugins: ['vue', '@typescript-eslint'],
+    rules: {
+        'vue/html-self-closing': 'off',
+        'vue/singleline-html-element-content-newline': 'off',
+        'vue/multi-word-component-names': 'off',
+        'vue/prefer-import-from-vue': 'off'
+    },
+    globals: {
+        defineOptions: 'readonly'
+    }
+}
+```
+
+
+
+**git提交配置**
+
+```shell
+git init 
+pnpm install mrm husky lint-staged -w -D 
+npx mrm lint-staged
+pnpm install @commitlint/cli @commitlint/config-conventional -D -w
+npx husky add .husky/commit-msg "npx --no-install commitlint --edit $1"
+```
+
+**新建`commitlint.config.js`**
+
+```js
+module.exports = {
+  extends: ['@commitlint/config-conventional'],
+  rules: {
+    'type-enum': [ // type枚举
+      2, 'always',
+      [
+        'build', // 编译相关的修改，例如发布版本、对项目构建或者依赖的改动
+        'feat', // 新功能
+        'fix', // 修补bug
+        'docs', // 文档修改
+        'style', // 代码格式修改, 注意不是 css 修改
+        'refactor', // 重构
+        'perf', // 优化相关，比如提升性能、体验
+        'test', // 测试用例修改
+        'revert', // 代码回滚
+        'ci', // 持续集成修改
+        'config', // 配置修改
+        'chore', // 其他改动
+      ],
+    ],
+    'type-empty': [2, 'never'], // never: type不能为空; always: type必须为空
+    'type-case': [0, 'always', 'lower-case'], // type必须小写，upper-case大写，camel-case小驼峰，kebab-case短横线，pascal-case大驼峰，等等
+    'scope-empty': [0],
+    'scope-case': [0],
+    'subject-empty': [2, 'never'], // subject不能为空
+    'subject-case': [0],
+    'subject-full-stop': [0, 'never', '.'], // subject以.为结束标记
+    'header-max-length': [2, 'always', 72], // header最长72
+    'body-leading-blank': [0], // body换行
+    'footer-leading-blank': [0, 'always'], // footer以空行开头
+  },
+}
+
 ```
 
 
@@ -317,7 +410,7 @@ declare module '*.vue' {
 
 
 
-## 6、编写组件库文档
+## 6、编写文档
 
 **使用 `vitepress`**
 
@@ -412,3 +505,10 @@ npm publish
 
 
 
+
+
+**参考文章：**
+
+[Vue3 + TS 搭建组件库 - 掘金 (juejin.cn)](https://juejin.cn/post/7145113345765408798#heading-7)
+
+[Vite+TS带你搭建一个属于自己的Vue3组件库 - 公众号-web前端进阶 - 博客园 (cnblogs.com)](https://www.cnblogs.com/zdsdididi/p/16460802.html)

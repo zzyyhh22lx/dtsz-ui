@@ -1,7 +1,7 @@
 <template>
-	<div :class="[bem.b(), bem.m('primary')]">
-		<slot></slot>
-	</div>
+  <div :class="[bem.b(), bem.m(type)]">
+    <slot></slot>
+  </div>
 </template>
 <script setup lang="ts">
 import { buttonProps } from './types/types'

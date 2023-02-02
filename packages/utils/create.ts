@@ -68,15 +68,19 @@ function createBEM(prefixName: string) {
       is,
     };
 }
-  
+   /**
+   *
+   * @param prefixName 前缀
+   * @param (var bem = createNamespace("button"))
+   * @param (bem.b()) --> dtsz-button
+   * @param (bem.e("hy")) --> dtsz-button__hy
+   * @param (bem.m("primary")) --> dtsz-button--primary
+   * @param (bem.is("checked", true)) --> is-checked
+   * @param (bem.bem("success", "element", "disabled")) --> dtsz-button-success__element--disabled
+   * @returns
+   */ 
 export function createNamespace(name: string) {
     const prefixName = `dtsz-${name}`;
     return createBEM(prefixName);
 }
 
-// var bem = createNamespace("button");
-// console.log(bem.b()); // dtsz-button
-// console.log(bem.e("hy")); // dtsz-button__hy
-// console.log(bem.m("primary")); // dtsz-button--primary
-// console.log(bem.is("checked", true)); // is-checked
-// console.log(bem.bem("success", "element", "disabled")); // dtsz-button-success__element--disabled

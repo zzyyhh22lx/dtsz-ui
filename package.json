@@ -5,13 +5,24 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "docs:dev": "pnpm -C docs dev"
+    "docs:dev": "pnpm -C docs dev",
+    "prepare": "husky install"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@commitlint/cli": "^17.4.2",
+    "@commitlint/config-conventional": "^17.4.2",
+    "@typescript-eslint/eslint-plugin": "^5.50.0",
+    "@typescript-eslint/parser": "^5.50.0",
     "@vitejs/plugin-vue": "^4.0.0",
+    "@vue/eslint-config-typescript": "^11.0.2",
+    "eslint": "^8.33.0",
+    "eslint-plugin-vue": "^9.9.0",
+    "husky": "^8.0.3",
+    "lint-staged": "^13.1.0",
+    "mrm": "^4.1.13",
     "typescript": "^4.9.4",
     "vite": "^4.0.4",
     "vue": "^3.2.45"
@@ -23,5 +34,8 @@
     "sass": "^1.57.1",
     "scss": "^0.2.4",
     "vitepress": "1.0.0-alpha.43"
+  },
+  "lint-staged": {
+    "*.js": "eslint --cache --fix"
   }
 }
