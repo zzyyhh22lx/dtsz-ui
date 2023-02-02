@@ -2,11 +2,43 @@
     // 全局变量
     --dtsz-color-white: #ffffff;
 
-    --dtsz-color-primary: #409eff;
-    --dtsz-color-primary-light: #ecf5ff;
-    --dtsz-color-primary-hover: #a0cfff;
-    --dtsz-color-primary-active: #337ecc;
-    --dtsz-color-success: #67c23a;
+    --dtsz-color-primary-dark: #337ecc;
+    --dtsz-color-primary-light-3: #409eff;
+    --dtsz-color-primary-light-5: #a0cfff;
+    --dtsz-color-primary-light-7: #d9ecff;
+    --dtsz-color-primary-light-8: #ecf5ff;
+
+    --dtsz-color-success-dark: #67c23a;
+    --dtsz-color-success-light-3: #95d475;
+    --dtsz-color-success-light-5: #b3e19d;
+    --dtsz-color-success-light-7: #d1edc4;
+    --dtsz-color-success-light-8: #e1f3d8;
+
+    --dtsz-color-info-dark: #73767a;
+    --dtsz-color-info-light-3: #b1b3b8;
+    --dtsz-color-info-light-5: #c8c9cc;
+    --dtsz-color-info-light-7: #dedfe0;
+    --dtsz-color-info-light-8: #e9e9eb;
+    --dtsz-color-info-light-9: #f4f4f5;
+
+    --dtsz-color-warning-dark: #b88230;
+    --dtsz-color-warning-light-3: #eebe77;
+    --dtsz-color-warning-light-5: #f3d19e;
+    --dtsz-color-warning-light-7: #f8e3c5;
+    --dtsz-color-warning-light-8: #faecd8;
+    --dtsz-color-warning-light-9: #fdf6ec;
+
+    --dtsz-color-danger-dark: #c45656;
+    --dtsz-color-danger-light-3: #f89898;
+    --dtsz-color-danger-light-5: #fab6b6;
+    --dtsz-color-danger-light-7: #fcd3d3;
+    --dtsz-color-danger-light-8: #fde2e2;
+    --dtsz-color-danger-light-9: #fef0f0;
 
     --dtsz-border-color: #dcdfe6;
+
+
+    --dtsz-border-radius-base: 4px;
+    --dtsz-border-radius-small: 2px;
+    --dtsz-border-radius-round: 20px;
 }

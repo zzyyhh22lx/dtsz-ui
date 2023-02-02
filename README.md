@@ -232,6 +232,14 @@ module.exports = {
 
 ```
 
+**例如：**
+
+```shell
+git add .
+git commit -m "feat: 添加配置" # 如果是直接 git commit -m "添加配置" 会报错
+git push
+```
+
 
 
 ## 3、本地调试
