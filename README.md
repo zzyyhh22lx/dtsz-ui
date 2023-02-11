@@ -238,6 +238,8 @@ module.exports = {
 git add .
 git commit -m "feat: 添加配置" # 如果是直接 git commit -m "添加配置" 会报错
 git push
+
+git commit -m "feat: 添加配置" --no-verify # 这样可以跳过检验
 ```
 
 
@@ -471,12 +473,24 @@ pnpm run docs:dev
 
 
 
-## 7、打包组件
+## 7、自动化测试
+
+`__text`
+
+```js
+
+```
+
+
+
+
+
+## 8、打包组件
 
 **配置 `vite.config.ts`**
 
 ```ts
-
+rollup
 ```
 
 **配置 `package.json`**
@@ -499,7 +513,7 @@ pnpm run docs:dev
 
 
 
-## 8、发布组件
+## 9、发布组件
 
 **发布到npm官网**
 

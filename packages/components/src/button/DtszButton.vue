@@ -7,6 +7,7 @@
   </div>
 </template>
 <script setup lang="ts">
+// 组合式，不要用选项式
 import { buttonProps } from './types/types'
 import { createNamespace } from "@dtsz-ui/utils/create"
 
