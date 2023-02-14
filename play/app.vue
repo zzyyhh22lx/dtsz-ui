@@ -12,8 +12,10 @@
       disabled
     ></dtsz-button>
     <DIcon name="edit" />
+    <dtsz-avatar shape="large"></dtsz-avatar>
+    <dtsz-image src="https://pic1.zhimg.com/80/v2-715769278745803cf7a5e012dfc2a66a_1440w.webp?source=1940ef5c"></dtsz-image>
   </div>
 </template>
 <script lang="ts" setup>
-import { DtszButton, DIcon } from 'dtsz-ui'
+import { DtszButton, DIcon, DtszAvatar, DtszImage} from 'dtsz-ui'
 </script>
