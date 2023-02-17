@@ -22,12 +22,10 @@ import { ref, reactive, watch, computed, onMounted } from 'vue';
 
 const bem = createNamespace("image") // bem.b() 为 dtsz-avatar
 const props = defineProps(imageProps);
-
 const state = reactive({
     isLoadError: false, // 是否加载失败
     loading: true, // 加载状态
 });
-
 const imgStyle = computed(() => `object-fit:${props.fit}`);
 
 onMounted(() => {
@@ -84,7 +82,7 @@ function onError(image) {
     }
 
     @include when(placeholder) {
-		height: 100%;
+        height: 100%;
         display: flex;
         font-size: 14px;
         color: #bfbfbf;
@@ -92,10 +90,10 @@ function onError(image) {
         align-items: center;
         justify-content: center;
         vertical-align: middle;
-	}
+    }
 
     @include when(error) {
-		height: 100%;
+        height: 100%;
         display: flex;
         font-size: 14px;
         color: #bfbfbf;
@@ -103,6 +101,6 @@ function onError(image) {
         align-items: center;
         justify-content: center;
         vertical-align: middle;
-	}
+    }
 }
 </style>

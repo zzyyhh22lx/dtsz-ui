@@ -24,6 +24,7 @@ export const avatarProps = {
     default: 'middle'
   },
   src: String,
+  alt: String,
 }
 
 export type AvatarProps = ExtractPropTypes<typeof avatarProps>
