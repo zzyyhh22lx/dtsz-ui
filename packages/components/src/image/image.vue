@@ -1,5 +1,5 @@
 <template>
-    <div ref="container" class="my-image">
+    <div ref="container" :class="bem.b()" :style="`width:${width}px;height:${height}px`">
         <!-- 占位区域 -->
         <div class="bem.is('placeholder', true)" v-if="state.loading">
             <slot name="placeholder">加载中</slot>

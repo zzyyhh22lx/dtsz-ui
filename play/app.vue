@@ -13,7 +13,7 @@
     ></dtsz-button>
     <DIcon name="edit" />
     <dtsz-avatar shape="square" size="large"  @error="error" src="https://cube.elemecdn.com/3/7c/3ea6beec64369c2642b92c6726f1epng.png"></dtsz-avatar>
-    <dtsz-image fit='cover' src="https://pic1.zhimg.com/80/v2-715769278745803cf7a5e012dfc2a66a_1440w.webp?source=1940ef5c"></dtsz-image>
+    <dtsz-image fit="cover" radius="50" src="https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg"></dtsz-image>
     <dtsz-image src="url" lazy></dtsz-image>
     <div class="scroll">
       <dtsz-image v-for="url in urls" :key="url" :src="url" lazy></dtsz-image>
