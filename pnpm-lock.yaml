@@ -47,19 +47,20 @@ importers:
       vite: registry.npmmirror.com/vite/4.0.4_sass@1.57.1
       vue: registry.npmmirror.com/vue/3.2.45
 
+  docs:
+    specifiers: {}
+
   packages/components:
     specifiers:
       '@dtsz-ui/utils': workspace:^1.0.0
     dependencies:
       '@dtsz-ui/utils': link:../utils
 
-  play:
-    specifiers:
-      '@dtsz-ui/theme-chalk': workspace:^1.0.0
-      dtsz-ui: workspace:^1.0.0
-    dependencies:
-      '@dtsz-ui/theme-chalk': link:../packages/theme-chalk
-      dtsz-ui: link:../packages/components
+  packages/theme-chalk:
+    specifiers: {}
+
+  packages/utils:
+    specifiers: {}
 
 packages:
 
