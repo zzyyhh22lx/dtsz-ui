@@ -18,27 +18,29 @@
 <script setup lang="ts">
 import { imageProps } from './types/types'
 import { createNamespace } from "@dtsz-ui/utils/create"
-import { ref, reactive, watch, computed, onMounted } from 'vue';
+import { ref, reactive, watch, computed, onMounted, onBeforeUnmount, nextTick } from 'vue';
+import { isInContainer, isHtmlEl, getScrollContainer, on, off, throttle } from "@dtsz-ui/utils/util.js";
 
 const bem = createNamespace("image") // bem.b() 为 dtsz-avatar
 const props = defineProps(imageProps);
+const emit = defineEmits(["error", "load"]);
 const state = reactive({
     isLoadError: false, // 是否加载失败
     loading: true, // 加载状态
+    imgWidth: 0,
+    imgHeight: 0,
 });
-const imgStyle = computed(() => `object-fit:${props.fit}`);
-
-onMounted(() => {
-    loadImage();
-})
-
+const imgStyle = computed(() => `object-fit:${props.fit};border-radius:${props.radius}px`);
+let _scrollContainer = null;
+let _lazyLoadHandler = null;
+const container = ref(null);
 // 加载图片
 const loadImage = () => {
     state.loading = true;
     state.isLoadError = false;
 
     var image = new Image();
-    image.onload = (e) => onComplete(e);
+    image.onload = (e) => onComplete(e, image);
     image.onerror = () => onError(image);
     image.src = props.src;
 };
@@ -50,18 +52,63 @@ watch(
 );
 
 // 图片加载完成回调
-function onComplete(e) {
+function onComplete(e, image) {
+    state.imgWidth = image.width;
+    state.imgHeight = image.height;
     state.loading = false;
     state.isLoadError = false;
-    //   emit("load", e);
+    emit("load", e);
 }
 
 // 图片加载失败回调
 function onError(image) {
     state.loading = false;
     state.isLoadError = true;
-    //   emit("error", image);
+    emit("error", image);
 }
+
+function onLazyLoad() {
+    if (isInContainer(container.value, _scrollContainer)) {
+        loadImage();
+        removeLazyLoadListener();
+    }
+}
+// 添加懒加载监听
+function addLazyLoadLintener() {
+    const { scrollContainer } = props;
+    if (isHtmlEl(scrollContainer)) {
+        let _scrollContainer = scrollContainer;
+    } else if (
+        typeof scrollContainer === "string" &&
+        scrollContainer !== ""
+    ) {
+        let _scrollContainer = document.querySelector(scrollContainer);
+    } else {
+        _scrollContainer = getScrollContainer(container.value);
+    }
+    if (_scrollContainer) {
+        _lazyLoadHandler = throttle(onLazyLoad, 200);
+        on(_scrollContainer, "scroll", _lazyLoadHandler);
+        setTimeout(() => onLazyLoad(), 100);
+    }
+}
+// 移除懒加载监听
+function removeLazyLoadListener() {
+    if (!_scrollContainer || !_lazyLoadHandler) return;
+    off(_scrollContainer, "scroll", _lazyLoadHandler);
+    _scrollContainer = null;
+    _lazyLoadHandler = null;
+}
+onMounted(() => {
+    if (!props.lazy) {
+        return loadImage();
+    }
+    nextTick(addLazyLoadLintener);
+});
+onBeforeUnmount(() => {
+    props.lazy && removeLazyLoadListener();
+});
+
 </script>
 
 <style lang="scss">
@@ -73,6 +120,7 @@ function onError(image) {
 
 @include b(avatar) {
     display: block;
+    height: 100%;
 
     img {
         display: block;
