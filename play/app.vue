@@ -11,9 +11,30 @@
       round
       disabled
     ></dtsz-button>
+
     <DIcon name="edit" />
+  
+    <div style="display:flex">
+      <DProgressbar
+        :angle="angle"
+        size="normal"
+      ></DProgressbar>
+      <DProgressbar
+        :angle="angle"
+        size="large"
+      ></DProgressbar>
+    </div>
+    <input
+      v-model.number="angle"
+      type="range"
+      name="设置圆角"
+      min="0"
+      max="360"
+    />
   </div>
 </template>
 <script lang="ts" setup>
-import { DtszButton, DIcon } from 'dtsz-ui'
+import { DtszButton, DIcon, DProgressbar } from 'dtsz-ui'
+import { ref } from 'vue'
+const angle = ref(0)
 </script>

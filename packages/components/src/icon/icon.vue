@@ -26,7 +26,7 @@ export default defineComponent({
             import('./font/iconfont.js' as any)
         })
         const iconName = computed(() => {
-            return `#dtsz-${props.name}`
+            return `#icon-${props.name}`
         })
         const styleDot = computed(() => {
             return {
