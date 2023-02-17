@@ -3,4 +3,6 @@ import DIcon from './src/icon'
 import DtszAvatar from './src/avatar'
 import DtszImage from './src/image'
 
-export { DtszButton, DIcon, DtszAvatar, DtszImage }
+import DProgressbar from './src/progressbar'
+
+export { DtszButton, DIcon, DProgressbar, DtszAvatar, DtszImage }
