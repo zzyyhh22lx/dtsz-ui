@@ -6,8 +6,29 @@
     <dtsz-button type="info">info</dtsz-button>
     <dtsz-button type="warning">warning</dtsz-button>
     <dtsz-button type="danger">danger</dtsz-button>
-    <dtsz-button type="danger" round disabled></dtsz-button>
+    <dtsz-button type="danger"
+    round
+    disabled
+    ></dtsz-button>
     <DIcon name="edit" />
+  
+    <div style="display:flex">
+      <DProgressbar
+        :angle="angle"
+        size="normal"
+      ></DProgressbar>
+      <DProgressbar
+        :angle="angle"
+        size="large"
+      ></DProgressbar>
+    </div>
+    <input
+      v-model.number="angle"
+      type="range"
+      name="设置圆角"
+      min="0"
+      max="360"
+    />
   </div>
   <div v-loading:[title]="loading">
     <p>
@@ -26,12 +47,11 @@
 </template>
 
 <script lang="ts" setup>
-import { DtszButton, DIcon } from "dtsz-ui";
+import { DtszButton, DIcon,DProgressbar } from 'dtsz-ui'
+const angle = ref(0)
 import { ref, onMounted } from "vue";
-
 const loading = ref<boolean>(true);
 const title = ref<string | undefined>("Loading...");
-
 onMounted(() => {
   setTimeout(() => {
     loading.value = false;

@@ -15,7 +15,7 @@ const bem = createNamespace("button") // bem.b() 为 dtsz-button
 
 defineProps(buttonProps)
 </script>
-<script lang="ts" vars="{ prop.disabled }">
+<script lang="ts">
 export default {
 	name: "DtszButton"
 };
