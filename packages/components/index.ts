@@ -1,4 +1,4 @@
 import DtszButton from './src/button'
 import DIcon from './src/icon'
-
-export { DtszButton, DIcon }
+import DtszDialog from './src/dialog'
+export { DtszButton, DIcon,DtszDialog }

@@ -41,4 +41,20 @@
     --dtsz-border-radius-base: 4px;
     --dtsz-border-radius-small: 2px;
     --dtsz-border-radius-round: 20px;
+
+    --dtsz-transition-duration: .3s;
+    --dtsz-mask-color: rgba(255, 255, 255, 0.9);
+    --dtsz-loading-spinner-size: 42px;
+    --dtsz-overlay-color-lighter: rgba(0, 0, 0, .5);
+    --dtsz-bg-color: #ffffff;
+    --dtsz-bg-color-page: #f2f3f5;
+    --dtsz-bg-color-overlay: #ffffff;
+    --dtsz-box-shadow: 0px 12px 32px 4px rgba(0, 0, 0, .04), 0px 8px 20px rgba(0, 0, 0, .08);
+    --dtsz-box-shadow-light: 0px 0px 12px rgba(0, 0, 0, .12);
+    --dtsz-box-shadow-lighter: 0px 0px 6px rgba(0, 0, 0, .12);
+    --dtsz-box-shadow-dark: 0px 16px 48px 16px rgba(0, 0, 0, .08), 0px 12px 32px rgba(0, 0, 0, .12), 0px 8px 16px -8px rgba(0, 0, 0, .16);
+    --dtsz-font-size-large: 18px;
+    --dtsz-font-line-height-primary: 24px;
+    --dtsz-border-radius-small: 2px;
+
 }
