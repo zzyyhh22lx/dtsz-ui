@@ -1,6 +1,6 @@
 <template>
   <div
-    :class="[bem.b(), bem.m(type), bem.is('round', round), bem.is('disabled', disabled)]"
+    :class="[bem.b(), bem.m(size), bem.m(type), bem.is('round', round), bem.is('disabled', disabled)]"
   >
     <slot v-if="$slots.default"></slot>
     <span v-else>Default</span>
@@ -69,7 +69,25 @@ export default {
 	@include when(round) {
 		border-radius: var(--dtsz-border-radius-round);
 	}
-
+	@include m(large) {
+		padding: 25px 30px;
+		font-size: 25px;
+		line-height: 50px;
+	}
+	@include m(small) {
+		padding: 15px 18px;
+		font-size: 18px;
+		line-height: 36px;
+	}
+	@include m(middle) {
+		padding: 18px 20px;
+		font-size: 20px;
+		line-height: 40px;
+	}
+	@include m(mini) {
+		padding: 5px 10px;
+		font-size: 16px;
+	}
 	@include m(primary) {
 		@include button-type(var(--dtsz-color-primary-light-3), var(--dtsz-color-primary-light-5), var(--dtsz-color-primary-dark));
 		@include when(disabled) {

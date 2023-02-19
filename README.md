@@ -473,6 +473,26 @@ pnpm run docs:dev
 
 
 
+在docs目录下：
+
+```shell
+pnpm i dtsz-ui
+```
+
+此时 package.json 会出现
+
+```json
+  "dependencies": {
+    "dtsz-ui": "workspace:^1.0.0"
+  }
+```
+
+后面文档就可以使用vue方式显示组件了
+
+
+
+
+
 ## 7、自动化测试
 
 `__text`
