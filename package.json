@@ -5,8 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "docs:dev": "pnpm -C docs dev",
-    "prepare": "husky install"
+    "dev": "pnpm run --filter ./play dev",
+    "prepare": "husky install",
+    "doc:dev": "pnpm run --filter ./docs dev"
   },
   "keywords": [],
   "author": "",
