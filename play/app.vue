@@ -10,10 +10,21 @@
       type="danger"
       round
       disabled
-    ></dtsz-button>
+    ></dtsz-button> 
     <DIcon name="edit" />
+    <dtsz-backToTop rightLen="50px" bottomLen="50px"></dtsz-backToTop>
+    <Dtsz-nav type="blackColor"></Dtsz-nav>
   </div>
 </template>
 <script lang="ts" setup>
 import { DtszButton, DIcon } from 'dtsz-ui'
+import { DtszBackToTop } from 'dtsz-ui'
+import { DtszNav } from 'dtsz-ui'
+import BackToTop from './components/wlc.vue'
 </script>
+
+<style>
+body {
+  height: 2000px;
+}
+</style>
