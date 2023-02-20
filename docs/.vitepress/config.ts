@@ -24,6 +24,13 @@ export default {
           { text: '头像', link: '/component/avatar' },
           { text: '图片', link: '/component/image' }
         ]
+        },
+            {
+        text: '反馈组件',
+        items: [
+          { text: '对话框', link: '/component/dialog' },
+          { text: '通知', link: '/component/notify' }
+        ]
       },
       {
         text: '进阶组件',
