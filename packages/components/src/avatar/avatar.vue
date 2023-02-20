@@ -1,27 +1,41 @@
 <template>
-    <div :class="[bem.b(), bem.m(shape)]">
-        <img v-if="src && !hasLoadError" :src="src" :alt="alt" @error="handleError" />
+    <div :class="[bem.b(), bem.m(shape), bem.m(size)]">
+        <img v-if="src && !hasLoadError" :src="src" :alt="alt" @error="onError" />
+        <slot></slot>
     </div>
 </template>
 
 <script setup lang="ts">
 import { avatarProps } from './types/types'
 import { createNamespace } from "@dtsz-ui/utils/create"
-import { ref, watch } from 'vue';
+import { onMounted, ref, watch } from 'vue';
 
 const hasLoadError = ref(false);
 const bem = createNamespace("avatar"); // bem.b() 为 dtsz-avatar
 const props = defineProps(avatarProps);
 const emits = defineEmits(["error"]);
 
+const loadImage = () => {
+    var image = new Image();
+    image.onerror = () => onError(image);
+    image.src = props.src;
+};
+
+// 图片地址改变重载图片
 watch(
     () => props.src,
-    () => (hasLoadError.value = false)
+    () => loadImage()
 );
-const handleError = (e: Event) => {
-    hasLoadError.value = true;
-    emits("error", e);
-};
+
+function onError(image:HTMLImageElement) {
+    emits("error", image);
+}
+
+onMounted(() => {
+    if (props.src) {
+        return loadImage();
+    }
+});
 </script>
 
 <style lang="scss">

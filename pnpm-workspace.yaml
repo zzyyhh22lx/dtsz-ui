@@ -1,4 +1,4 @@
 packages:
   - 'packages/**' # 存放所有组件
   - 'docs' # 文档
-  - 'example' # 测试组件
+  - 'play' # 测试组件

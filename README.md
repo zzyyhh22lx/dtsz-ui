@@ -473,12 +473,33 @@ pnpm run docs:dev
 
 
 
+在docs目录下：
+
+```shell
+pnpm i dtsz-ui
+```
+
+此时 package.json 会出现
+
+```json
+  "dependencies": {
+    "dtsz-ui": "workspace:^1.0.0"
+  }
+```
+
+后面文档就可以使用vue方式显示组件了
+
+
+
+
+
 ## 7、自动化测试
 
-`__text`
+vitest
 
 ```js
-
+pnpm add vitest happy-dom c8 -D -w
+pnpm add @vue/test-utils -D -w
 ```
 
 
@@ -489,9 +510,77 @@ pnpm run docs:dev
 
 **配置 `vite.config.ts`**
 
-```ts
-rollup
+```shell
+pnpm i vite-plugin-dts -D -w ## 导出适合用于ts
 ```
+
+在packages/components/vite.config.ts 中
+
+```ts
+import { defineConfig } from "vite";
+import vue from "@vitejs/plugin-vue"
+import dts from 'vite-plugin-dts' // 可配置ts
+export default defineConfig(
+    {
+        build: {
+            target: 'modules',
+            //打包文件目录
+            outDir: "es",
+            //压缩
+            minify: false,
+            //css分离
+            //cssCodeSplit: true,
+            rollupOptions: {
+                //忽略打包vue文件
+                external: ['vue'],
+                input: ['index.ts'],
+                output: [
+                    {
+                        format: 'es',
+                        //不用打包成.es.js,这里我们想把它打包成.js
+                        entryFileNames: '[name].js',
+                        //让打包目录和我们目录对应
+                        preserveModules: true,
+                        //配置打包根目录
+                        dir: 'es',
+                        preserveModulesRoot: 'src'
+                    },
+                    {
+                        format: 'cjs',
+                        entryFileNames: '[name].js',
+                        //让打包目录和我们目录对应
+                        preserveModules: true,
+                        //配置打包根目录
+                        dir: 'lib',
+                        preserveModulesRoot: 'src'
+                    }
+                ]
+            },
+            lib: {
+                entry: './index.ts',
+                formats: ['es', 'cjs']
+            }
+        },
+        plugins: [
+            vue(),
+            dts({
+                //指定使用的tsconfig.json为我们整个项目根目录下掉,如果不配置,你也可以在components下新建tsconfig.json
+                tsConfigFilePath: '../../tsconfig.json'
+            }),
+            //因为这个插件默认打包到es下，我们想让lib目录下也生成声明文件需要再配置一个
+            dts({
+                outputDir:'lib',
+                tsConfigFilePath: '../../tsconfig.json'
+            })
+        ]
+    }
+)
+
+```
+
+
+
+
 
 **配置 `package.json`**
 
@@ -503,26 +592,32 @@ rollup
 ...
 
 // 配置script
+... 
+"scripts": {
+    ...
+    "build": "vite build"
+}
+...
 ```
 
 **打包**
 
 ```shell
-
+pnpm run build
 ```
 
 
 
 ## 9、发布组件
 
-**发布到npm官网**
+**先去npm官网注册账号**
 
-[npm (npmjs.com)](https://www.npmjs.com/)
+https://www.npmjs.com/
 
 ```shell
-npm login # 登录 npm 账号 （输入账号密码邮箱）
-npm config set registry=https://registry.npmjs.org # 需要确保自己用的 registry 是 npm 源而不是淘宝镜像源
-npm publish
+npm config set registry=https://registry.npmjs.org # 需要官方源，不可以用淘宝源
+pnpm login # 输入账号密码和邮箱，密码颜色是不可见的
+pnpm publish --access public --no-git-checks # git no checks
 ```
 
 
@@ -534,3 +629,5 @@ npm publish
 [Vue3 + TS 搭建组件库 - 掘金 (juejin.cn)](https://juejin.cn/post/7145113345765408798#heading-7)
 
 [Vite+TS带你搭建一个属于自己的Vue3组件库 - 公众号-web前端进阶 - 博客园 (cnblogs.com)](https://www.cnblogs.com/zdsdididi/p/16460802.html)
+
+[从0搭建Vue3组件库:引入单元测试框架Vitest - 掘金 (juejin.cn)](https://juejin.cn/post/7131773709571850276)

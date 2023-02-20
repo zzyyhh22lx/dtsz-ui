@@ -1,11 +1,10 @@
 import { ExtractPropTypes } from 'vue'
 export const ProgressbarSize = ['normal', 'large']; // 200 400
-
 export const progressbarProps = {
   angle: { // 角度 0~360
     type: Number,
     validator(value: number) {
-      value = parseInt(value, 10)
+      value = Math.floor(value)
       return value >= 0 && value <= 360
     },
     default: 0
@@ -20,7 +19,7 @@ export const progressbarProps = {
   },
   size: {
     type: String,
-    validator(value: string) {
+    validator(value) {
         return ProgressbarSize.includes(value)
     },
     default: 'normal'

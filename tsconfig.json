@@ -23,6 +23,9 @@
       "skipLibCheck": true, // 跳过类库检测
     //   "types": ["unplugin-vue-define-options"] // sfc 添加 name属性的包需要的
     },
+    "include": [
+      "packages/utils"
+    ],
     "exclude": [
       // 排除掉哪些类库
       "node_modules",
