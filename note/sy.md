@@ -1,4 +1,12 @@
-# 问题 & 解决方案汇总
+# Shi Yue's Note
+
+## 学习记录
+
+- Vue 自定义指令
+
+  文档：https://cn.vuejs.org/guide/reusability/custom-directives.html#introduction
+
+## 问题 & 解决方案汇总
 
 - 在执行任意`pnpm i`命令时，出现报错`pnpm : 无法加载文件 D:\nodejs\pnpm.ps1`
 
