@@ -6,6 +6,11 @@
 
   文档：https://cn.vuejs.org/guide/reusability/custom-directives.html#introduction
 
+- CSSStyleSheet.insertRule()
+
+  MDN：https://developer.mozilla.org/en-US/docs/Web/API/CSSStyleSheet/insertRule
+  CSSKeyframesRule：https://developer.mozilla.org/en-US/docs/Web/API/CSSKeyframesRule
+
 ## 问题 & 解决方案汇总
 
 - 在执行任意`pnpm i`命令时，出现报错`pnpm : 无法加载文件 D:\nodejs\pnpm.ps1`
