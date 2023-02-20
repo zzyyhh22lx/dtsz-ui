@@ -20,7 +20,7 @@
       aspernatur reiciendis asperiores!
     </p>
   </div>
-  <div v-loading.fullscreen="loading">
+  <div v-loading.fullscreen.lock="loading">
     <p>配置项演示</p>
     <p>
       Lorem, ipsum dolor sit amet consectetur adipisicing elit. Numquam

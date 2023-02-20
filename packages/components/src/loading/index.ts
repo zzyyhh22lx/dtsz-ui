@@ -18,6 +18,9 @@ const append = (el: any, binding: DirectiveBinding) => {
   } else {
     el.appendChild(el.instance.$el);
   }
+  if (binding.modifiers.lock) {
+    lockScroll();
+  }
 };
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -30,6 +33,9 @@ const remove = (el: any, binding: DirectiveBinding) => {
     el.removeChild(el.instance.$el);
     el.classList.remove(relative);
     el.classList.remove(hidden);
+  }
+  if (binding.modifiers.lock) {
+    cancelLockedScroll();
   }
 };
 
@@ -84,6 +90,29 @@ const directives = (el: any) => {
       "dtsz-loading-mask"
     )[0] as HTMLElement;
     mask.style.backgroundColor = el.getAttribute("dtsz-loading-background");
+  }
+};
+
+const lockScroll = () => {
+  const scrollTop =
+    document.documentElement.scrollTop || document.body.scrollTop;
+  const screen = document.body;
+  screen.style.position = "fixed";
+  screen.style.top = "-" + scrollTop + "px";
+  screen.style.width = "calc(100% - 7px)";
+};
+
+const cancelLockedScroll = () => {
+  const screen = document.body;
+  const scrollTop = Math.abs(parseFloat(screen.style.top));
+  screen.style.position = "";
+  screen.style.top = "";
+  screen.style.width = "100%";
+  if (document.body) {
+    document.body.scrollTop = scrollTop;
+  }
+  if (document.documentElement) {
+    document.documentElement.scrollTop = scrollTop;
   }
 };
 
