@@ -4,7 +4,30 @@ import DtszLoading from "./Loading.vue";
 const relative = "g-relative";
 const hidden = "g-hidden";
 
-// TODO: 整理代码
+// 锁定滚动
+const lockScroll = () => {
+  const scrollTop =
+    document.documentElement.scrollTop || document.body.scrollTop;
+  const screen = document.body;
+  screen.style.position = "fixed";
+  screen.style.top = "-" + scrollTop + "px";
+  screen.style.width = "calc(100% - 7px)";
+};
+
+// 取消锁定滚动
+const cancelLockedScroll = () => {
+  const screen = document.body;
+  const scrollTop = Math.abs(parseFloat(screen.style.top));
+  screen.style.position = "";
+  screen.style.top = "";
+  screen.style.width = "100%";
+  if (document.body) {
+    document.body.scrollTop = scrollTop;
+  }
+  if (document.documentElement) {
+    document.documentElement.scrollTop = scrollTop;
+  }
+};
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const append = (el: any, binding: DirectiveBinding) => {
@@ -13,27 +36,30 @@ const append = (el: any, binding: DirectiveBinding) => {
   if (["absolute", "relative", "fixed"].indexOf(style.position) === -1) {
     el.classList.add(relative);
   }
+  // 是否设置 fullscreen
   if (binding.modifiers.fullscreen) {
     document.body.appendChild(el.instance.$el);
   } else {
     el.appendChild(el.instance.$el);
   }
+  // 是否设置 lock
   if (binding.modifiers.lock) {
     lockScroll();
   }
 };
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
+const removeLoading = (el: any, parent: HTMLElement) => {
+  parent.removeChild(el.instance.$el);
+  parent.classList.remove(relative);
+  parent.classList.remove(hidden);
+};
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const remove = (el: any, binding: DirectiveBinding) => {
-  if (binding.modifiers.fullscreen) {
-    document.body.removeChild(el.instance.$el);
-    document.body.classList.remove(relative);
-    document.body.classList.remove(hidden);
-  } else {
-    el.removeChild(el.instance.$el);
-    el.classList.remove(relative);
-    el.classList.remove(hidden);
-  }
+  binding.modifiers.fullscreen
+    ? removeLoading(el, document.body)
+    : removeLoading(el, el);
   if (binding.modifiers.lock) {
     cancelLockedScroll();
   }
@@ -93,29 +119,6 @@ const directives = (el: any) => {
   }
 };
 
-const lockScroll = () => {
-  const scrollTop =
-    document.documentElement.scrollTop || document.body.scrollTop;
-  const screen = document.body;
-  screen.style.position = "fixed";
-  screen.style.top = "-" + scrollTop + "px";
-  screen.style.width = "calc(100% - 7px)";
-};
-
-const cancelLockedScroll = () => {
-  const screen = document.body;
-  const scrollTop = Math.abs(parseFloat(screen.style.top));
-  screen.style.position = "";
-  screen.style.top = "";
-  screen.style.width = "100%";
-  if (document.body) {
-    document.body.scrollTop = scrollTop;
-  }
-  if (document.documentElement) {
-    document.documentElement.scrollTop = scrollTop;
-  }
-};
-
 export const loadingDirective = {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   mounted(el: any, binding: DirectiveBinding) {
@@ -127,18 +130,11 @@ export const loadingDirective = {
       // 此时指令传入的值为 true，即 v-loading=true
       append(el, binding);
     }
-    // if (binding.arg !== "undefined") {
-    //   el.instance.setText(binding.arg);
-    // }
     directives(el);
   },
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars
   updated(el: any, binding: DirectiveBinding) {
-    // if (binding.arg !== "undefined") {
-    //   el.instance.setText(binding.arg);
-    // }
-
     if (binding.value !== binding.oldValue) {
       binding.value ? append(el, binding) : remove(el, binding);
     }

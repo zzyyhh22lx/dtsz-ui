@@ -1,6 +1,6 @@
 <template>
   <div
-    v-loading="true"
+    v-loading="loading1"
     dtsz-loading-text="Loading..."
     :dtsz-loading-spinner="svg"
     dtsz-loading-svg-view-box="-10, -10, 50, 50"
@@ -20,7 +20,7 @@
       aspernatur reiciendis asperiores!
     </p>
   </div>
-  <div v-loading.fullscreen.lock="loading">
+  <div v-loading.fullscreen.lock="loading2">
     <p>配置项演示</p>
     <p>
       Lorem, ipsum dolor sit amet consectetur adipisicing elit. Numquam
@@ -58,7 +58,8 @@
 <script lang="ts" setup>
 import { ref, onMounted } from "vue";
 
-const loading = ref<boolean>(true);
+const loading1 = ref<boolean>(true);
+const loading2 = ref<boolean>(true);
 const svg = `
         <path class="path" d="
           M 30 15
@@ -72,7 +73,10 @@ const svg = `
 
 onMounted(() => {
   setTimeout(() => {
-    loading.value = false;
+    loading1.value = false;
+  }, 6000);
+  setTimeout(() => {
+    loading2.value = false;
   }, 3000);
 });
 </script>
