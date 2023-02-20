@@ -45,7 +45,7 @@ export default {
   left: 0;
   transition: opacity var(--dtsz-transition-duration);
   .dtsz-loading-spinner {
-    top: 50%;
+    top: calc(50% - var(--dtsz-loading-spinner-size) / 2);
     margin-top: calc((0px - var(--dtsz-loading-spinner-size)) / 2);
     width: 100%;
     text-align: center;
