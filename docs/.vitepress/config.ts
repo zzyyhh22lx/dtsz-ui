@@ -19,6 +19,13 @@ export default {
         ]
       },
       {
+        text: '数据展示',
+        items: [
+          { text: '头像', link: '/component/avatar' },
+          { text: '图片', link: '/component/image' }
+        ]
+      },
+      {
         text: '进阶组件',
         items: [
           { text: '环形进度条', link: '/component/progress' }
