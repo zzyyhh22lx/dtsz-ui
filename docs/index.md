@@ -14,7 +14,8 @@ hero:
   actions:
     - theme: brand # 主题
       text: 开始
-      link: /component/button.md # 路由路径
+      link: /component/index.md # 路由路径
+
 
 
 features: # 介绍

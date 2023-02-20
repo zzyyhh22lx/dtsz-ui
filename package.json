@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "pnpm run --filter ./play dev",
+    "play:dev": "pnpm run --filter ./play dev",
     "prepare": "husky install",
     "doc:dev": "pnpm run --filter ./docs dev"
   },

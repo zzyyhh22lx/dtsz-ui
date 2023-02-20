@@ -2,9 +2,15 @@ export default {
   themeConfig: {
     siteTitle: 'Dtsz-ui🤣',
     footer: {
-      message: '快来加入Dtsz吧🤩',
+      message: '快来加入Dtsz吧🤩<a>https://github.com/zzyyhh22lx/dtsz-ui</a>',
     },
     sidebar: [
+      {
+        text: '基本配置',
+        items: [
+          {text: '导入', link: '/component/index'}
+        ]
+      },
       {
         text: '基础组件',
         items: [
@@ -15,7 +21,7 @@ export default {
       {
         text: '进阶组件',
         items: [
-          { text: '进度条', link: '/component/progress' }
+          { text: '环形进度条', link: '/component/progress' }
         ]
       }
     ]

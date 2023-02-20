@@ -3,7 +3,12 @@
     <div style="display:flex">
       <DProgressbar
         :angle="angle"
-      ></DProgressbar>
+        size="large"
+        inset_bgc="black"
+        outset_bgc="red"
+      >
+        DTSZ
+      </DProgressbar>
     </div>
     <br>
     调配角度：
@@ -18,8 +23,8 @@
     <br>
   </div>
 </template>
-
-<script lang="ts" setup>
-import { ref } from 'vue'
-const angle = ref(0)
-</script>
+  
+  <script lang="ts" setup>
+  import { ref } from 'vue'
+  const angle = ref(0)
+  </script>

@@ -9,7 +9,8 @@
     <dtsz-button type="danger" round disabled></dtsz-button>
     <dtsz-button type="warning">warning</dtsz-button>
 
-    <DIcon name="edit" />
+    <DIcon name="email" type="large" dot badge="1" />
+    <DIcon name="edit" dot badge="1" type="middle" />
   
     <div style="display:flex">
       <DProgressbar

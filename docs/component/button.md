@@ -1,4 +1,4 @@
-# dtsz-button 按钮
+# 按钮
 
 ## 基础用法
 
@@ -84,6 +84,6 @@ import { DtszButton } from 'dtsz-ui'
 | 参数          | 说明         | 类型    | 可选值                                             | 默认  |
 | ------------- | ------------ | ------- | --------------------------------------------------| ----- |
 | size          | 尺寸         | string  | large / middle /small / mini                 |  middle   | —     |
-| type          | 类型         | string  | primary / success / warning / danger / info  | primary     |
+| type          | 类型         | string  | primary / success / warning / danger / info  | ------    |
 | round         | 是否圆角按钮 | boolean | —                                                  | false |
 | disabled      | 是否禁用     | boolean | —                                                  | false |

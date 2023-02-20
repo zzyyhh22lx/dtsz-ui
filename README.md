@@ -495,10 +495,10 @@ pnpm i dtsz-ui
 
 ## 7、自动化测试
 
-`__text`
+vitest
 
 ```js
-
+pnpm add vitest happy-dom c8 -D -w
 ```
 
 
