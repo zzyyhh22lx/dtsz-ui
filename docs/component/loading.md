@@ -10,6 +10,10 @@
 
 ### 区域加载
 
+dtsz 组件库使用自定义指令`v-loading`，在`v-loading`上绑定布尔值即可使用。
+
+Loading 遮罩会插入到绑定元素的子节点。
+
 <ClientOnly>
   <div class="example" style="position: relative">
     <LoadingDemo1/>
@@ -34,6 +38,8 @@
 :::
 
 ### 自定义加载中组件内容
+
+可以自定义设置 Loading 组件的文字提示、图标以及背景颜色，详细可见“指令”板块。
 
 <ClientOnly>
   <div class="example" style="position: relative">
@@ -77,7 +83,9 @@ const svg = `
 
 :::
 
-### 让加载组件铺满整个屏幕
+### 全屏加载
+
+全屏遮罩需要在`v-loading`指令上添加`fullscreen`修饰符，可以使用`lock`修饰符锁定屏幕滚动，通常两者配合使用。
 
 <ClientOnly>
   <div class="example" style="position: relative">
