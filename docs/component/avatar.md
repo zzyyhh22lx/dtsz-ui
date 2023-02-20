@@ -91,7 +91,6 @@ import AvatarDemo2 from './demo/avatardemo2.vue'
 </script>
 ## API
 ### Attributes
-
 | 参数          | 说明         | 类型    | 可选值                                             | 默认  |
 | ------------- | ------------ | ------- | --------------------------------------------------| ----- |
 | size          | 尺寸         | string  | 'large' / 'middle' /'small'                  |  'middle'   | —     |
