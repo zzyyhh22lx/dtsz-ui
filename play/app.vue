@@ -1,12 +1,14 @@
 <template>
   <div>
-    <dtsz-button @click="open()"></dtsz-button>
+    <dtsz-button></dtsz-button>
     <dtsz-button type="success">success</dtsz-button>
     <dtsz-button type="primary">primary</dtsz-button>
     <dtsz-button type="info">info</dtsz-button>
     <dtsz-button type="warning">warning</dtsz-button>
     <dtsz-button type="danger">danger</dtsz-button>
     <dtsz-button type="danger" round disabled></dtsz-button>
+    <dtsz-button type="primary" @click="openDialog()">对话框</dtsz-button>
+    <dtsz-button type="primary" @click="openNotify()">通知</dtsz-button>
     <DIcon name="edit" />
     <DtszDialog width="80%" :dialogVisible="visible">
       <template v-slot:title>
@@ -17,6 +19,13 @@
         <dtsz-button type="primary" @click="close()">取消</dtsz-button>
       </template>
     </DtszDialog>
+    <DtszNotify
+      @NotifyVisibleValue="NotifyVisibleValue"
+      :notifyVisible="NotifyVisible"
+      position="top-right"
+    >
+    </DtszNotify>
+
     <dtsz-avatar
       shape="square"
       size="large"
@@ -69,10 +78,12 @@ import {
   DtszAvatar,
   DtszImage,
   DtszDialog,
+  DtszNotify,
 } from 'dtsz-ui'
 import { ref, onMounted } from 'vue'
 const visible = ref(false)
-function open() {
+const NotifyVisible = ref(false)
+function openDialog() {
   visible.value = true
 }
 function close() {
@@ -80,6 +91,12 @@ function close() {
 }
 function error() {
   alert('error')
+}
+function openNotify() {
+  NotifyVisible.value = true
+}
+function NotifyVisibleValue(value) {
+  NotifyVisible.value = value
 }
 const urls = [
   'https://fuss10.elemecdn.com/a/3f/3302e58f9a181d2509f3dc0fa68b0jpeg.jpeg',
