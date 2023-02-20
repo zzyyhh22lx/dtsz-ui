@@ -1,17 +1,17 @@
 <template>
     <div ref="container" :class="bem.b()" :style="`width:${width}px;height:${height}px`">
         <!-- 占位区域 -->
-        <div class="bem.is('placeholder', true)" v-if="state.loading">
+        <div class="bem.is('placeholder', placeholder)" v-if="state.loading">
             <slot name="placeholder">加载中</slot>
         </div>
 
         <!-- 加载失败 -->
-        <div class="bem.is('error', true)" v-else-if="state.isLoadError">
+        <div class="bem.is('error', error)" v-else-if="state.isLoadError">
             <slot name="error">加载失败</slot>
         </div>
 
         <!-- 图片 -->
-        <img v-else class="bem.is('inner', true)" :src="src" :style="imgStyle" />
+        <img v-else :src="src" :style="imgStyle" />
     </div>
 </template>
 
@@ -27,12 +27,10 @@ const emit = defineEmits(["error", "load"]);
 const state = reactive({
     isLoadError: false, // 是否加载失败
     loading: true, // 加载状态
-    imgWidth: 0,
-    imgHeight: 0,
 });
-const imgStyle = computed(() => `object-fit:${props.fit};border-radius:${props.radius}px`);
-let _scrollContainer = null;
-let _lazyLoadHandler = null;
+const imgStyle = computed(() => `object-fit:${props.fit};border-radius:${props.radius}px;width:100%;height:100%;`);
+let _scrollContainer: Element | String | null;
+let _lazyLoadHandler: Function | null;
 const container = ref(null);
 // 加载图片
 const loadImage = () => {
@@ -52,16 +50,14 @@ watch(
 );
 
 // 图片加载完成回调
-function onComplete(e, image) {
-    state.imgWidth = image.width;
-    state.imgHeight = image.height;
+function onComplete(e:Event, image:HTMLImageElement) {
     state.loading = false;
     state.isLoadError = false;
     emit("load", e);
 }
 
 // 图片加载失败回调
-function onError(image) {
+function onError(image:HTMLImageElement) {
     state.loading = false;
     state.isLoadError = true;
     emit("error", image);
@@ -77,12 +73,12 @@ function onLazyLoad() {
 function addLazyLoadLintener() {
     const { scrollContainer } = props;
     if (isHtmlEl(scrollContainer)) {
-        let _scrollContainer = scrollContainer;
+        _scrollContainer = scrollContainer;
     } else if (
         typeof scrollContainer === "string" &&
         scrollContainer !== ""
     ) {
-        let _scrollContainer = document.querySelector(scrollContainer);
+        _scrollContainer = document.querySelector(scrollContainer);
     } else {
         _scrollContainer = getScrollContainer(container.value);
     }
@@ -119,36 +115,34 @@ onBeforeUnmount(() => {
 @use '@dtsz-ui/theme-chalk/src/mixins.scss' as *;
 
 @include b(avatar) {
-    display: block;
-    height: 100%;
-
-    img {
-        display: block;
+    overflow: hidden;
+    >img {
+        // display: block;
         width: 100%;
         height: 100%;
-        font-size: 0;
+        // font-size: 0;
     }
 
     @include when(placeholder) {
-        height: 100%;
+        // height: 100%;
         display: flex;
-        font-size: 14px;
+        // font-size: 14px;
         color: #bfbfbf;
         background-color: #f5f5f5;
         align-items: center;
         justify-content: center;
-        vertical-align: middle;
+        // vertical-align: middle;
     }
 
     @include when(error) {
-        height: 100%;
+        // height: 100%;
         display: flex;
-        font-size: 14px;
+        // font-size: 14px;
         color: #bfbfbf;
         background-color: #f5f5f5;
         align-items: center;
         justify-content: center;
-        vertical-align: middle;
+        // vertical-align: middle;
     }
 }
 </style>

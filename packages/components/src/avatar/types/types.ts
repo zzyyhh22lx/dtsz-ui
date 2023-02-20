@@ -14,7 +14,8 @@ export const avatarProps = {
     type: String,
     validator(value: string) {
       return AvatarShape.includes(value)
-    }
+    },
+    default:'circle'
   },
   size: {
     type: String,
@@ -23,7 +24,10 @@ export const avatarProps = {
     },
     default: 'middle'
   },
-  src: String,
+  src: {
+    type:String,
+    default:'',
+  },
   alt: String,
 }
 

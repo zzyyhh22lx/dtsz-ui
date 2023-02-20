@@ -17,9 +17,12 @@
         <dtsz-button type="primary" @click="close()">取消</dtsz-button>
       </template>
     </DtszDialog>
+    <dtsz-avatar size="small"></dtsz-avatar>
+    <dtsz-avatar shape="circle" size="middle"></dtsz-avatar>
+    <dtsz-avatar shape="square" size="large"></dtsz-avatar>
     <dtsz-avatar
-      shape="square"
-      size="large"
+      shape="circle"
+      size="middle"
       src="https://cube.elemecdn.com/3/7c/3ea6beec64369c2642b92c6726f1epng.png"
       @error="error"
     ></dtsz-avatar>
