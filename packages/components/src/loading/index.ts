@@ -72,11 +72,13 @@ const directives = (el: any) => {
   }
   if (el.getAttribute("dtsz-loading-spinner")) {
     const circle = document.getElementsByClassName("path")[0];
-    circle.insertAdjacentHTML(
-      "beforebegin",
-      el.getAttribute("dtsz-loading-spinner")
-    );
-    circle.remove();
+    if (circle) {
+      circle.insertAdjacentHTML(
+        "beforebegin",
+        el.getAttribute("dtsz-loading-spinner")
+      );
+      circle.remove();
+    }
 
     // 通过 insertAdjacentHTML 插入元素导致部分 css 样式丢失
     // 采用单独设置方法，目前暂未找到更好的办法
@@ -97,25 +99,31 @@ const directives = (el: any) => {
     }`;
     const sheet = document.styleSheets[0];
     sheet.insertRule(animationName, 0);
-    path.style.animation = "loading-dash 1.5s ease-in-out infinite";
-    path.style.strokeDasharray = "90, 150";
-    path.style.strokeDashoffset = "0";
-    path.style.strokeWidth = "2";
-    path.style.stroke = "#409eff";
-    path.style.strokeLinecap = "round";
+    if (path) {
+      path.style.animation = "loading-dash 1.5s ease-in-out infinite";
+      path.style.strokeDasharray = "90, 150";
+      path.style.strokeDashoffset = "0";
+      path.style.strokeWidth = "2";
+      path.style.stroke = "#409eff";
+      path.style.strokeLinecap = "round";
+    }
   }
   if (el.getAttribute("dtsz-loading-svg-view-box")) {
     const circular = document.getElementsByClassName("circular")[0];
-    circular.setAttribute(
-      "viewBox",
-      el.getAttribute("dtsz-loading-svg-view-box")
-    );
+    if (circular) {
+      circular.setAttribute(
+        "viewBox",
+        el.getAttribute("dtsz-loading-svg-view-box")
+      );
+    }
   }
   if (el.getAttribute("dtsz-loading-background")) {
     const mask = document.getElementsByClassName(
       "dtsz-loading-mask"
     )[0] as HTMLElement;
-    mask.style.backgroundColor = el.getAttribute("dtsz-loading-background");
+    if (mask) {
+      mask.style.backgroundColor = el.getAttribute("dtsz-loading-background");
+    }
   }
 };
 
