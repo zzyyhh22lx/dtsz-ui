@@ -2,36 +2,19 @@
 
 ## 使用方法
 
+<script setup lang="ts">
+  import LoadingDemo1 from './demo/loadingDemo1.vue'
+  import LoadingDemo2 from './demo/loadingDemo2.vue'
+  import LoadingDemo3 from './demo/loadingDemo3.vue'
+</script>
+
 ### 区域加载
 
-<div class="example" style='position:relative'>
-  <div v-loading='true' dtsz-loading-text="Loading...">
-    <p>
-      Lorem, ipsum dolor sit amet consectetur adipisicing elit. Numquam veritatis saepe, exercitationem illo at ea consectetur nam dolorum consequuntur totam, nobis consequatur et voluptate enim vel fugit aspernatur reiciendis asperiores!
-    </p>
+<ClientOnly>
+  <div class="example" style="position: relative">
+    <LoadingDemo1/>
   </div>
-</div>
-
-<script setup lang="ts">
-  import { ref, onMounted } from "vue";
-  
-  const svg = `
-        <path class="path" d="
-          M 30 15
-          L 28 17
-          M 25.61 25.61
-          A 15 15, 0, 0, 1, 15 30
-          A 15 15, 0, 1, 1, 27.99 7.5
-          L 15 15
-        " style="stroke-width: 4px; fill: rgba(0, 0, 0, 0)"/>
-      `;
-
-  onMounted(() => {
-    setTimeout(() => {
-      loading1.value = false;
-    }, 3000);
-  })
-</script>
+</ClientOnly>
 
 ::: details 显示代码
 
@@ -46,41 +29,24 @@
     </p>
   </div>
 </template>
-
-<script setup lang="ts">
-import { ref, onMounted } from "vue";
-const loading = ref<boolean>(true);
-onMounted(() => {
-  setTimeout(() => {
-    loading.value = false;
-  }, 3000);
-});
-</script>
 ```
 
 :::
 
 ### 自定义加载中组件内容
 
-<div class="example" style='position:relative'>
-  <div
-    v-loading="loading1"
-    dtsz-loading-text="Loading..."
-    :dtsz-loading-spinner="svg"
-    dtsz-loading-svg-view-box="-10, -10, 50, 50"
-    dtsz-loading-background="rgba(122, 122, 122, 0.8)">
-    <p>
-      Lorem, ipsum dolor sit amet consectetur adipisicing elit. Numquam veritatis saepe, exercitationem illo at ea consectetur nam dolorum consequuntur totam, nobis consequatur et voluptate enim vel fugit aspernatur reiciendis asperiores!
-    </p>
+<ClientOnly>
+  <div class="example" style="position: relative">
+    <LoadingDemo2/>
   </div>
-</div>
+</ClientOnly>
 
 ::: details 显示代码
 
 ```vue
 <template>
   <div
-    v-loading="loading1"
+    v-loading="true"
     dtsz-loading-text="Loading..."
     :dtsz-loading-spinner="svg"
     dtsz-loading-svg-view-box="-10, -10, 50, 50"
@@ -96,8 +62,6 @@ onMounted(() => {
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted } from "vue";
-const loading = ref<boolean>(true);
 const svg = `
         <path class="path" d="
           M 30 15
@@ -115,12 +79,37 @@ const svg = `
 
 ### 让加载组件铺满整个屏幕
 
+<ClientOnly>
+  <div class="example" style="position: relative">
+    <LoadingDemo3/>
+  </div>
+</ClientOnly>
+
 ::: details 显示代码
 
 ```vue
 <template>
-  <div v-loading.fullscreen.lock="loading"</div>
+  <DtszButton
+    v-loading.fullscreen.lock="loading"
+    dtsz-loading-text="Loading..."
+    type="primary"
+    size="mini"
+    @click="showLoading"
+  ></DtszButton>
 </template>
+
+<script setup lang="ts">
+import { ref } from "vue";
+const loading = ref<boolean>(false);
+const showLoading = () => {
+  loading.value = loading.value ? false : true;
+  if (loading.value) {
+    setTimeout(() => {
+      loading.value = false;
+    }, 3000);
+  }
+};
+</script>
 ```
 
 :::
