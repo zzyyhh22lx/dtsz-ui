@@ -16,6 +16,8 @@
 </template>
 
 <script setup lang="ts">
+import { onMounted } from "vue";
+
 const svg = `
         <path class="path" d="
           M 30 15
@@ -26,8 +28,11 @@ const svg = `
           L 15 15
         " style="stroke-width: 4px; fill: rgba(0, 0, 0, 0)"/>
       `;
-const mask = document.getElementsByClassName(
-  "dtsz-loading-mask"
-)[0] as HTMLElement;
-mask.style.zIndex = "9";
+
+onMounted(() => {
+  const mask = document.getElementsByClassName(
+    "dtsz-loading-mask"
+  )[0] as HTMLElement;
+  mask.style.zIndex = "9";
+});
 </script>

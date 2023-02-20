@@ -12,8 +12,12 @@
 </template>
 
 <script setup lang="ts">
-const mask = document.getElementsByClassName(
-  "dtsz-loading-mask"
-)[0] as HTMLElement;
-mask.style.zIndex = "9";
+import { onMounted } from "vue";
+
+onMounted(() => {
+  const mask = document.getElementsByClassName(
+    "dtsz-loading-mask"
+  )[0] as HTMLElement;
+  mask.style.zIndex = "9";
+});
 </script>

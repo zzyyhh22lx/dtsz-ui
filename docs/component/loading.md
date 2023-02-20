@@ -2,12 +2,6 @@
 
 ## 使用方法
 
-<script setup lang="ts">
-  import LoadingDemo1 from './demo/loadingDemo1.vue'
-  import LoadingDemo2 from './demo/loadingDemo2.vue'
-  import LoadingDemo3 from './demo/loadingDemo3.vue'
-</script>
-
 ### 区域加载
 
 dtsz 组件库使用自定义指令`v-loading`，在`v-loading`上绑定布尔值即可使用。
@@ -137,3 +131,9 @@ const showLoading = () => {
 | dtsz-loading-text       | 显示在加载图标下方的加载文案 | string  |
 | dtsz-loading-spinner    | 自定义加载图标               | string  |
 | dtsz-loading-background | 背景遮罩的颜色               | string  |
+
+<script setup lang="ts">
+  import LoadingDemo1 from './demo/loadingDemo1.vue'
+  import LoadingDemo2 from './demo/loadingDemo2.vue'
+  import LoadingDemo3 from './demo/loadingDemo3.vue'
+</script>
