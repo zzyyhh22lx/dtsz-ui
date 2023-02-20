@@ -83,4 +83,3 @@ export function createNamespace(name: string) {
     const prefixName = `dtsz-${name}`;
     return createBEM(prefixName);
 }
-
