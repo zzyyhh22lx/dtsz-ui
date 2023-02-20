@@ -67,23 +67,28 @@ const remove = (el: any, binding: DirectiveBinding) => {
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const directives = (el: any) => {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  let path: any;
   if (el.getAttribute("dtsz-loading-text")) {
     el.instance.setText(el.getAttribute("dtsz-loading-text"));
   }
+
   if (el.getAttribute("dtsz-loading-spinner")) {
-    const circle = document.getElementsByClassName("path")[0];
-    if (circle) {
+    if (!el.lastChild.firstChild.firstChild) {
+      return;
+    }
+    const circle = el.lastChild.firstChild.firstChild.firstChild;
+    if (circle && circle.nodeName !== "#text") {
       circle.insertAdjacentHTML(
         "beforebegin",
         el.getAttribute("dtsz-loading-spinner")
       );
+      path = circle.parentNode.childNodes[1];
       circle.remove();
-    }
 
-    // 通过 insertAdjacentHTML 插入元素导致部分 css 样式丢失
-    // 采用单独设置方法，目前暂未找到更好的办法
-    const path = document.getElementsByClassName("path")[0] as HTMLElement;
-    const animationName = `@keyframes loading-dash {
+      // 通过 insertAdjacentHTML 插入元素导致部分 css 样式丢失
+      // 采用单独设置方法，目前暂未找到更好的办法
+      const animationName = `@keyframes loading-dash {
       0% {
         stroke-dasharray: 1, 126;
         stroke-dashoffset: 0;
@@ -97,19 +102,20 @@ const directives = (el: any) => {
         stroke-dashoffset: -120px;
       }
     }`;
-    const sheet = document.styleSheets[0];
-    sheet.insertRule(animationName, 0);
-    if (path) {
-      path.style.animation = "loading-dash 1.5s ease-in-out infinite";
-      path.style.strokeDasharray = "90, 150";
-      path.style.strokeDashoffset = "0";
-      path.style.strokeWidth = "2";
-      path.style.stroke = "#409eff";
-      path.style.strokeLinecap = "round";
+      const sheet = document.styleSheets[0];
+      sheet.insertRule(animationName, 0);
+      if (path) {
+        path.style.animation = "loading-dash 1.5s ease-in-out infinite";
+        path.style.strokeDasharray = "90, 150";
+        path.style.strokeDashoffset = "0";
+        path.style.strokeWidth = "2";
+        path.style.stroke = "#409eff";
+        path.style.strokeLinecap = "round";
+      }
     }
   }
   if (el.getAttribute("dtsz-loading-svg-view-box")) {
-    const circular = document.getElementsByClassName("circular")[0];
+    const circular = el.lastChild.firstChild.firstChild;
     if (circular) {
       circular.setAttribute(
         "viewBox",
@@ -118,9 +124,7 @@ const directives = (el: any) => {
     }
   }
   if (el.getAttribute("dtsz-loading-background")) {
-    const mask = document.getElementsByClassName(
-      "dtsz-loading-mask"
-    )[0] as HTMLElement;
+    const mask = el.lastChild;
     if (mask) {
       mask.style.backgroundColor = el.getAttribute("dtsz-loading-background");
     }
