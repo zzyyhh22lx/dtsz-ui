@@ -6,6 +6,7 @@
     dtsz-loading-svg-view-box="-10, -10, 50, 50"
     dtsz-loading-background="rgba(122, 122, 122, 0.8)"
   >
+    <p>各指令演示</p>
     <p>
       Lorem, ipsum dolor sit amet consectetur adipisicing elit. Numquam
       veritatis saepe, exercitationem illo at ea consectetur nam dolorum
@@ -17,6 +18,39 @@
       veritatis saepe, exercitationem illo at ea consectetur nam dolorum
       consequuntur totam, nobis consequatur et voluptate enim vel fugit
       aspernatur reiciendis asperiores!
+    </p>
+  </div>
+  <div v-loading.fullscreen="loading">
+    <p>配置项演示</p>
+    <p>
+      Lorem, ipsum dolor sit amet consectetur adipisicing elit. Numquam
+      veritatis saepe, exercitationem illo at ea consectetur nam dolorum
+      consequuntur totam, nobis consequatur et voluptate enim vel fugit
+      aspernatur reiciendis asperiores! Lorem ipsum dolor sit, amet consectetur
+      adipisicing elit. Minus repellendus quisquam, cum saepe suscipit illo sit
+      molestias deleniti placeat enim omnis ipsam quasi recusandae laborum
+      dignissimos deserunt magnam eos sint. Lorem, ipsum dolor sit amet
+      consectetur adipisicing elit. Numquam veritatis saepe, exercitationem illo
+      at ea consectetur nam dolorum consequuntur totam, nobis consequatur et
+      voluptate enim vel fugit aspernatur reiciendis asperiores! Lorem ipsum
+      dolor sit, amet consectetur adipisicing elit. Minus repellendus quisquam,
+      cum saepe suscipit illo sit molestias deleniti placeat enim omnis ipsam
+      quasi recusandae laborum dignissimos deserunt magnam eos sint.
+    </p>
+    <p>
+      Lorem, ipsum dolor sit amet consectetur adipisicing elit. Numquam
+      veritatis saepe, exercitationem illo at ea consectetur nam dolorum
+      consequuntur totam, nobis consequatur et voluptate enim vel fugit
+      aspernatur reiciendis asperiores! Lorem ipsum dolor sit amet consectetur
+      adipisicing elit. Enim repudiandae vitae assumenda nulla neque esse quis
+      corrupti cupiditate doloremque sapiente, obcaecati, deleniti reprehenderit
+      minima tenetur culpa nam autem reiciendis illo! Lorem, ipsum dolor sit
+      amet consectetur adipisicing elit. Numquam veritatis saepe, exercitationem
+      illo at ea consectetur nam dolorum consequuntur totam, nobis consequatur
+      et voluptate enim vel fugit aspernatur reiciendis asperiores! Lorem ipsum
+      dolor sit, amet consectetur adipisicing elit. Minus repellendus quisquam,
+      cum saepe suscipit illo sit molestias deleniti placeat enim omnis ipsam
+      quasi recusandae laborum dignissimos deserunt magnam eos sint.
     </p>
   </div>
 </template>

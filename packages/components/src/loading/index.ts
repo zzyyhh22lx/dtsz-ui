@@ -7,20 +7,30 @@ const hidden = "g-hidden";
 // TODO: 整理代码
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-const append = (el: any) => {
+const append = (el: any, binding: DirectiveBinding) => {
   const style: CSSStyleDeclaration = getComputedStyle(el);
   el.classList.add(hidden);
   if (["absolute", "relative", "fixed"].indexOf(style.position) === -1) {
     el.classList.add(relative);
   }
-  el.appendChild(el.instance.$el);
+  if (binding.modifiers.fullscreen) {
+    document.body.appendChild(el.instance.$el);
+  } else {
+    el.appendChild(el.instance.$el);
+  }
 };
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-const remove = (el: any) => {
-  el.removeChild(el.instance.$el);
-  el.classList.remove(relative);
-  el.classList.remove(hidden);
+const remove = (el: any, binding: DirectiveBinding) => {
+  if (binding.modifiers.fullscreen) {
+    document.body.removeChild(el.instance.$el);
+    document.body.classList.remove(relative);
+    document.body.classList.remove(hidden);
+  } else {
+    el.removeChild(el.instance.$el);
+    el.classList.remove(relative);
+    el.classList.remove(hidden);
+  }
 };
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -85,7 +95,8 @@ export const loadingDirective = {
     el.instance = instance;
 
     if (binding.value) {
-      append(el);
+      // 此时指令传入的值为 true，即 v-loading=true
+      append(el, binding);
     }
     // if (binding.arg !== "undefined") {
     //   el.instance.setText(binding.arg);
@@ -99,9 +110,8 @@ export const loadingDirective = {
     //   el.instance.setText(binding.arg);
     // }
 
-    // binding.value（boolean）有所改变
     if (binding.value !== binding.oldValue) {
-      binding.value ? append(el) : remove(el);
+      binding.value ? append(el, binding) : remove(el, binding);
     }
     directives(el);
   },
