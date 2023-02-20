@@ -4,15 +4,14 @@
     <dtsz-button type="success">success</dtsz-button>
     <dtsz-button type="primary">primary</dtsz-button>
     <dtsz-button type="info">info</dtsz-button>
-    <dtsz-button type="warning">warning</dtsz-button>
     <dtsz-button type="danger">danger</dtsz-button>
     <dtsz-button type="danger" round disabled></dtsz-button>
     <DIcon name="edit" />
-    <DtszDialog width="80%" :dialogVisible="visible">
-      <template v-slot:title>
+    <DtszDialog width="80%" :dialog-visible="visible">
+      <template #title>
         <h3>我是标题</h3>
       </template>
-      <template v-slot:footer>
+      <template #footer>
         <dtsz-button type="primary" @click="close()">确定</dtsz-button>
         <dtsz-button type="primary" @click="close()">取消</dtsz-button>
       </template>
@@ -20,8 +19,8 @@
     <dtsz-avatar
       shape="square"
       size="large"
-      @error="error"
       src="https://cube.elemecdn.com/3/7c/3ea6beec64369c2642b92c6726f1epng.png"
+      @error="error"
     ></dtsz-avatar>
     <dtsz-image
       fit="cover"

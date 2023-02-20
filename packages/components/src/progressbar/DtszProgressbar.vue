@@ -32,7 +32,6 @@
   import { progressbarProps } from './types/types'
   import { createNamespace } from "@dtsz-ui/utils/create"
   import { computed } from 'vue'
-
   const bem = createNamespace("progressbar") // bem.b() 为 dtsz-progressbar
   
   const props = defineProps(progressbarProps)
