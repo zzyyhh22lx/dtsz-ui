@@ -1,5 +1,23 @@
 <template>
   <div>
+    <dtsz-backToTop rightLen="50px" bottomLen="50px"></dtsz-backToTop>
+    <dtsz-nav type="blackColor"></dtsz-nav>
+    <dtsz-row :gutter="10">
+      <div>布局测试</div>
+      <dtsz-col span="8"><div class="col-div"></div></dtsz-col>
+      <dtsz-col span="10"><div class="col-div"></div></dtsz-col>
+    </dtsz-row>
+    <dtsz-row :gutter="10">
+      <dtsz-col span="3"><div class="col-div"></div></dtsz-col>
+      <dtsz-col span="2"><div class="col-div"></div></dtsz-col>
+      <dtsz-col span="10"><div class="col-div"></div></dtsz-col>
+      <dtsz-col span="4"><div class="col-div"></div></dtsz-col>
+    </dtsz-row>
+    <dtsz-row :gutter="10">
+      <dtsz-col span="5"><div class="col-div"></div></dtsz-col>
+      <dtsz-col span="2"><div class="col-div"></div></dtsz-col>
+      <dtsz-col span="1"><div class="col-div"></div></dtsz-col>
+    </dtsz-row>
     <dtsz-button></dtsz-button>
     <dtsz-button type="success">success</dtsz-button>
     <dtsz-button type="primary">primary</dtsz-button>
@@ -60,8 +78,27 @@
   <sy></sy>
 </template>
 
-<script lang="ts" setup>
-import {
+
+<style>
+body {
+  height: 2000px;
+}
+.col-div {
+  background-color: rgb(97, 126, 126); 
+  height: 40px; 
+  border-radius: 20px;
+}
+.scroll {
+  margin: 10px;
+  overflow: hidden scroll;
+  width: 1000px;
+  height: 500px;
+  background-color: #eee;
+  white-space: nowrap;
+}
+</style>
+
+<script lang="ts" setup>import {
   DtszButton,
   DIcon,
   DProgressbar,
@@ -70,6 +107,10 @@ import {
   DtszDialog,
   DtszNotify,
 } from "dtsz-ui";
+import { DtszBackToTop } from 'dtsz-ui'
+import { DtszNav } from 'dtsz-ui'
+import { DtszRow } from 'dtsz-ui'
+import { DtszCol } from 'dtsz-ui'
 import { ref } from "vue";
 import sy from "./components/sy.vue";
 
@@ -103,13 +144,3 @@ const urls = [
 
 const angle = ref(0);
 </script>
-<style>
-.scroll {
-  margin: 10px;
-  overflow: hidden scroll;
-  width: 1000px;
-  height: 500px;
-  background-color: #eee;
-  white-space: nowrap;
-}
-</style>
