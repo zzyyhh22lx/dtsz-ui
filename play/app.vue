@@ -98,7 +98,8 @@ body {
 }
 </style>
 
-<script lang="ts" setup>import {
+<script lang="ts" setup>
+import {
   DtszButton,
   DIcon,
   DProgressbar,
@@ -106,11 +107,11 @@ body {
   DtszImage,
   DtszDialog,
   DtszNotify,
+  DtszBackToTop,
+  DtszNav,
+  DtszRow,
+  DtszCol,
 } from "dtsz-ui";
-import { DtszBackToTop } from 'dtsz-ui'
-import { DtszNav } from 'dtsz-ui'
-import { DtszRow } from 'dtsz-ui'
-import { DtszCol } from 'dtsz-ui'
 import { ref } from "vue";
 import sy from "./components/sy.vue";
 
