@@ -5,9 +5,13 @@ import {
   DProgressbar,
   DIcon,
   DtszAvatar,
-    DtszImage,
-    DtszDialog,
-  DtszNotify
+  DtszImage,
+  DtszDialog,
+  DtszNotify,
+  DtszBackToTop,
+  DtszNav,
+  DtszRow,
+  DtszCol,
 } from "dtsz-ui";
 import { loadingDirective } from "dtsz-ui/src/loading/index";
 
@@ -23,5 +27,9 @@ export default {
     app.directive("loading", loadingDirective);
     app.component('DtszDialog', DtszDialog)
     app.component('DtszNotify', DtszNotify)
+    app.component("DtszBackToTop", DtszBackToTop);
+    app.component("DtszRow", DtszRow);
+    app.component('DtszNav', DtszNav)
+    app.component('DtszCol', DtszCol)
   },
 };
