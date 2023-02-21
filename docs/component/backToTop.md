@@ -1,26 +1,40 @@
 # 回到顶部
 
-## 基础用法
-在vue项目中首先下载dtsz-ui包，在需要导入的地方引入并且使用即可
+## 使用方法
 
-## 使用示例
+在滚动页面时，当滚动一定距离的时候会出现回到顶部按钮
+使用 rightLen 属性来设置 距离右侧的距离,bottomLen 属性设置距离底部的距离。
+<br>
+
+<div>
+    <backtotopdemo1 rightLen="50px" bottomLen="50px"></backtotopdemo1>
+</div>
+
+::: details 显示代码
+
 ```vue
 <template>
     <div>
-        <dtsz-backToTop></dtsz-backToTop>
+        <dtsz-backToTop rightLen="50px" bottomLen="50px"></dtsz-backToTop>
     </div>
 </template>
+
+<script lang="ts" setup>
+import { DtszBackToTop } from 'dtsz-ui'
+</script>
+
+<style>
+body{
+    height: 200px;
+}
+</style>
 ```
 
-### 默认属性修改示例
-以下代码修改了回到顶部按钮距离底部与侧边的距离分别为10px
-```vue
-<template>
-    <div>
-        <dtsz-backToTop rightLen="10px" bottomLen="10px"></dtsz-backToTop>
-    </div>
-</template>
-```
+:::
+
+<script setup lang="ts">
+  import backtotopdemo1 from './demo/backtotopdemo.vue'
+</script>
 
 ## Attributes
 
@@ -28,9 +42,3 @@
 | ------------- | ------------ | ------- | --------------------------------------------------| ----- |
 | rightLen         | 距离页面右侧的距离        | string  | 0-页面的宽度                |  40px   | —     |
 | bottomLen       | 距离页面底部的距离         | string  | 0-页面的高度  | 40px   |
-
-## 插槽
-
-| 插槽名         | 说明         |  默认值  |
-|-------------- | -----------  | --------- |
-|default       |自定义内容  | 

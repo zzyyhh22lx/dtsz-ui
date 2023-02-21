@@ -1,9 +1,15 @@
 # 布局
 
-## 基础用法
-在vue项目中首先下载dtsz-ui包，在需要导入的地方引入并且使用即可
+## 使用方法
+使用span来确定不同col占据一行的百分比，使用gutter来确定间隔
+<br/>
 
-## 使用示例
+<div>
+    <layoutdemo></layoutdemo>
+</div>
+
+::: details 显示代码
+
 ```vue
 <template>
     <div>
@@ -12,24 +18,36 @@
             <dtsz-col span="2"><div class="col-div"></div></dtsz-col>
             <dtsz-col span="10"><div class="col-div"></div></dtsz-col>
             <dtsz-col span="4"><div class="col-div"></div></dtsz-col>
-        </dtsz-row>
-    </div>
-</template>
-```
-
-### 默认属性修改示例
-以下代码修改了span的值，代表在这一个24栏的布局中每一个col占据的百分比大小
-```vue
-<template>
-    <div>
-        <dtsz-row :gutter="10">
+    </dtsz-row>
+    <dtsz-row :gutter="10">
             <dtsz-col span="5"><div class="col-div"></div></dtsz-col>
             <dtsz-col span="2"><div class="col-div"></div></dtsz-col>
             <dtsz-col span="1"><div class="col-div"></div></dtsz-col>
-        </dtsz-row>
+    </dtsz-row>
     </div>
 </template>
+
+<script lang="ts" setup>
+import { 
+    DtszRow,
+    DtszCol 
+  } from 'dtsz-ui'
+</script>
+
+<style>
+.col-div {
+  background-color: rgb(97, 126, 126); 
+  height: 40px; 
+  border-radius: 20px;
+}
+</style>
 ```
+
+:::
+
+<script setup lang="ts">
+import layoutdemo from './demo/layoutdemo.vue'
+</script>
 
 ## Attributes（row）
 
@@ -44,9 +62,3 @@
 | 参数          | 说明         | 类型    | 可选值                                             | 默认  |
 | ------------- | ------------ | ------- | --------------------------------------------------| ----- |
 | span         | col占据的栏位        | string  | [0-24]                |  0   | —     |
-
-## 插槽
-
-| 插槽名         | 说明         |  默认值  |
-|-------------- | -----------  | --------- |
-|default       |自定义内容  | 
