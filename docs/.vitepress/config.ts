@@ -14,6 +14,9 @@ export default {
         items: [
           { text: "按钮", link: "/component/button" },
           { text: "图标", link: "/component/icon" },
+          { text: "导航", link: "/component/nav" },
+          { text: "布局", link: "/component/layout" },
+          { text: "回到顶部", link: "/component/backToTop" },
         ],
       },
       {

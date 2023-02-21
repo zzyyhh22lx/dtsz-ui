@@ -25,24 +25,7 @@ import { DtszNav } from 'dtsz-ui'
 
 :::
 
-### 默认属性修改示例
-以下代码修改了样式为white白色风格的样式
 
-<div>
-    <dtsznav2></dtsznav2>
-</div>
-
-::: details 显示代码
-
-```vue
-<template>
-    <div>
-        <dtsz-nav type="whiteColor"></dtsz-nav>
-    </div>
-</template>
-```
-
-:::
 
 <script setup lang="ts">
 import dtsznav1 from './demo/navdemo1.vue'
