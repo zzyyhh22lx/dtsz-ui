@@ -1,5 +1,6 @@
 import { defineConfig } from "vite";
 import vue from "@vitejs/plugin-vue"
+import dts from 'vite-plugin-dts'
 export default defineConfig(
     {
         build: {
@@ -13,7 +14,7 @@ export default defineConfig(
             rollupOptions: {
                 //忽略打包vue文件
                 external: ['vue'],
-                input: ['src/index.ts'],
+                input: ['index.ts'],
                 output: [
                     {
                         format: 'es',
@@ -42,7 +43,16 @@ export default defineConfig(
             }
         },
         plugins: [
-            vue()
+            vue(),
+            dts({
+                //指定使用的tsconfig.json为我们整个项目根目录下掉,如果不配置,你也可以在components下新建tsconfig.json
+                tsConfigFilePath: '../../tsconfig.json'
+            }),
+            //因为这个插件默认打包到es下，我们想让lib目录下也生成声明文件需要再配置一个
+            dts({
+                outputDir:'lib',
+                tsConfigFilePath: '../../tsconfig.json'
+            })
         ]
     }
 )
