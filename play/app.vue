@@ -13,7 +13,7 @@
     ></dtsz-button> 
     <DIcon name="edit" />
     <dtsz-backToTop rightLen="50px" bottomLen="50px"></dtsz-backToTop>
-    <Dtsz-nav type="blackColor"></Dtsz-nav>
+    <dtsz-nav type="blackColor"></dtsz-nav>
     <dtsz-row :gutter="10">
       <div>布局测试</div>
       <dtsz-col span="8"><div class="col-div"></div></dtsz-col>
