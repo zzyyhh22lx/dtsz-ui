@@ -9,7 +9,7 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "@dtsz-ui/theme-chalk": "workspace:^1.0.0",
     "dtsz-ui": "workspace:^1.0.0"

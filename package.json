@@ -5,12 +5,14 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "docs:dev": "pnpm -C docs dev",
-    "prepare": "husky install"
+    "play:dev": "pnpm run --filter ./play dev",
+    "prepare": "husky install",
+    "doc:dev": "pnpm run --filter ./docs dev",
+    "build": "pnpm run --filter ./packages/components build"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "devDependencies": {
     "@commitlint/cli": "^17.4.2",
     "@commitlint/config-conventional": "^17.4.2",
@@ -18,13 +20,18 @@
     "@typescript-eslint/parser": "^5.50.0",
     "@vitejs/plugin-vue": "^4.0.0",
     "@vue/eslint-config-typescript": "^11.0.2",
+    "@vue/test-utils": "^2.3.0",
+    "c8": "^7.13.0",
     "eslint": "^8.33.0",
     "eslint-plugin-vue": "^9.9.0",
+    "happy-dom": "^8.6.0",
     "husky": "^8.0.3",
     "lint-staged": "^13.1.0",
     "mrm": "^4.1.13",
     "typescript": "^4.9.4",
     "vite": "^4.0.4",
+    "vite-plugin-dts": "2.0.0-beta.1",
+    "vitest": "^0.28.5",
     "vue": "^3.2.45"
   },
   "dependencies": {
