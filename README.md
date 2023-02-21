@@ -84,7 +84,7 @@ shamefully-hoist = true
 
 以将多个项目合并到一个仓库中
 
-```yaml
+```yaml`
 packages:
   - 'packages/**' # 存放所有组件
   - 'docs' # 文档
